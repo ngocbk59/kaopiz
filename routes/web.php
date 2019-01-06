@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/hello', function(){
-	$user = [
-		"name" => "ngoc",
-		"age" => 22,
-		"hometown" => "ha noi"
-	];
-	return view('hello',['test'=>$user]);
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// use App\Category;
+// use App\Product;
+// Route::get('list-cate', function(){
+// 	//$cates = Category::all();
+// 	$cates = Category::where('cate_name', 'like', '%i%')->where('id','>',3)->orWhere('id',1)->get();
+// 	//$cates = Category::where('cate_name', 'like', '%i%')->first();
+// 	$cate = Product::skip(10)->take(10)->get();
+// 	$categ = Product::whereIn('id', [1,15,80])->get();
+// 	dd($categ);
+// });
+Route::get('/','HomeController@index');

@@ -14,7 +14,6 @@ class CreateInvoiceDetailTable extends Migration
     public function up()
     {
         Schema::create('invoice_detail', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('invoice_id');
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
