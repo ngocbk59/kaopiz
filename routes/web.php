@@ -24,4 +24,5 @@
 // 	$categ = Product::whereIn('id', [1,15,80])->get();
 // 	dd($categ);
 // });
-Route::get('/','HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/danh-muc/{id}.htm', 'HomeController@listProducts')->name('cate');
