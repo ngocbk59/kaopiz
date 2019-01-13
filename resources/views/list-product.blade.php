@@ -210,7 +210,7 @@
                                         <div class="product-inner">
                                             <figure class="product-image">
                                                 <div class="product-image--holder">
-                                                    <a href="product-details.html">
+                                                    <a href="{{route('detail', ['id' => $item->id])}}">
                                                         <img src="{{$item->image}}" alt="Product Image" class="primary-image">
                                                         <img src="{{$item->image}}" alt="Product Image" class="secondary-image">
                                                     </a>
@@ -236,7 +236,7 @@
                                             </figure>
                                             <div class="product-info text-center">
                                                 <h3 class="product-title">
-                                                    <a href="product-details.html">{{$item->name}}</a>
+                                                    <a href="{{route('detail', ['id' => $item->id])}}">{{$item->name}}</a>
                                                 </h3>
                                                 <span class="product-price-wrapper">
                                                     <span class="money">${{$item->price}}</span>

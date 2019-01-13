@@ -424,32 +424,5 @@
         <!-- Modal End -->
 
         <!-- Newsletter Popup Start -->
-        <div class="ai-newsletter-popup" id="subscribe-popup">
-            <div class="ai-newsletter-popup-modal">
-                <a class="custom-close popup-close">
-                    <i class="dl-icon-close"></i>
-                </a>
-                <div class="ai-newsletter-popup-content">
-                    <div class="ai-newsletter-popup-body">
-                        <h5>Man Autumn Winter 2019</h5>
-                        <h3 class="heading-tertiary mb--10">Join our newsletter and get 20% per sale</h3>
-                        <form action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a" class="popup-newsletter-form mc-form mb--30" target="_blank">
-                            <input type="email" name="popup-newsletter_email" id="popup-newsletter_email" class="popup-newsletter-form__input" placeholder="Enter Your Email Address ....">
-                            <button type="submit" class="btn btn-small btn-style-1 subscribe-btn">Submit</button>
-                        </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                        <label for="popup-hide" class="dont-show-popup">
-                            <input type="checkbox" name="popup-hide" id="popup-hide">
-                            Do not show popup anymore
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div> 
+       
         <!-- Newsletter Popup End -->

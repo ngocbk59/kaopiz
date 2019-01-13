@@ -26,3 +26,14 @@
 // });
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/danh-muc/{id}.htm', 'HomeController@listProducts')->name('cate');
+Route::get('/chi-tiet/{id}.htm', 'HomeController@detail')->name('detail');
+
+// Cart
+Route::prefix('cart')->group(function() {
+	Route::get('/', 'CartController@index')->name('cart.index');
+});
+//login
+Route::get('cp-login',"HomeController@cpLogin")->name('login');
+//check dang nhap
+Route::post('cp-login',"HomeController@cpPostLogin");
+Route::any('logout',"HomeController@logout")->name('logout');
