@@ -80,4 +80,35 @@ class HomeController extends Controller
             return view('admin.login')->with('msg', 'Sai tài khoản/mật khẩu');
         }
     }
+
+    public function addCart($id){
+		$item = Product::find($id);
+		if(!$item){
+			return "404 notfound!";
+		}
+		
+		// check xem co gio hang hay chua
+		// chua co => tao moi
+		$cart = session()->has('cart') == true ? session('cart') : [];
+		// kiem tra san pham xem co trong gio hang hay chua
+		$flag = -1;
+		foreach($cart as $key => $val){
+			if($val['id'] === $item->id){
+				$flag = $key;
+				break;
+			}
+		}
+		// 1 - chua co => chuyen $item => mang | add quantity = 1
+		if($flag === -1){
+			// push item vao trong gio hang
+			$item->quantity = 1;
+			array_push($cart, $item->toArray());
+		}else{ // 2 - da co trong gio hang => xac dinh index
+			// cart[index][quantity]++
+			$cart[$flag]['quantity']++;
+		}
+		session(['cart' => $cart]);
+		 dd(session('cart'));
+		return redirect(route('home'));   
+	}
 }

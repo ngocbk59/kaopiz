@@ -12,7 +12,7 @@
     </ul>
     <div class="tab-content">
         <div id="main-info" class="tab-pane fade in active">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{route('product.save-edit')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{$model->id}}">
                 <div class="row">
@@ -65,11 +65,7 @@
                             @if ($errors->first('image'))
                                 <span class="text-danger">{{$errors->first('image')}}</span>
                             @endif
-                        </div>
-                        {{-- <div class="form-group">
-                            <label for="">Ảnh gallery (Chọn nhiều ảnh)</label>
-                            <input type="file" name="galleries[]" class="form-control" multiple>
-                        </div> --}}
+                        </div>                       
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
@@ -192,6 +188,10 @@
         })
         function encodeImageFileAsURL(element, deploySelector) {
             var file = element.files[0];
+            if(file == undefined){
+                $('#' + deploySelector).attr('src', $('#defaultImage').val());
+                return false;
+            }
             var reader = new FileReader();
             reader.onloadend = function() {
                 // console.log('RESULT', reader.result)

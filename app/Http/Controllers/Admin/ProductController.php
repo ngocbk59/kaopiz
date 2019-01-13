@@ -71,7 +71,19 @@ class ProductController extends Controller
         return redirect(route('product.list'));
     }
 
-    public function postEdit($id, SaveProductRequest $request){
+    public function postEdit(Request $request){
+        $model = Product::find($request->id);
+        $model->fill($request->all());
+        // luu anh
+        if($request->hasFile('image')){
+            // dat ten cho anh
+            $filename = uniqid(). "." . $request->image->extension();
+            // luu anh voi ten vua tao ra
+            $path = $request->image->storeAs('images/products', $filename);
+            $model->image = $path;
+        }
+        $model->save();
+        return redirect(route('product.list'));
     }
 
     public function uploadGallery(Request $request){

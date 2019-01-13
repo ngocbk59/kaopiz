@@ -392,7 +392,7 @@
 	                                                        <i class="dl-icon-view"></i>
 	                                                    </span>
 	                                                </a>
-	                                                <a class="add_to_cart_btn action-btn" href="cart.html" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+	                                                <a class="add_to_cart_btn action-btn" href="{{route('cart.add', ['id' => $item->id])}}" data-toggle="tooltip" data-placement="top" title="Add to Cart">
 	                                                    <i class="dl-icon-cart29"></i>
 	                                                </a>
 	                                                <a class="add_wishlist action-btn" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
