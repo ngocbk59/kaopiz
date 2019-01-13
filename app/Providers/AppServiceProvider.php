@@ -17,9 +17,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        View::composer('layouts.client-header', function ($view) {
+        View::composer(['layouts.client-header', 'layouts.client-footer'], function ($view) {
             $menus = Category::take(4)->get();
+            $cart = session()->has('cart') == true ? session('cart') : [];
             $view->with('menus', $menus);
+            $view->with('cart', $cart);
         });
     }
 

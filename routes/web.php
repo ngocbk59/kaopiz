@@ -27,7 +27,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/danh-muc/{id}.htm', 'HomeController@listProducts')->name('cate');
 
-Route::get('/add-cart/{id}', "HomeController@addCart")->name('cart.add');
+Route::post('/add-cart', "HomeController@addCart")->name('cart.add');
 Route::get('/check-cart', function(){
         dd(session('cart'));
 })->name('cart.checkout');

@@ -1,3 +1,12 @@
+@php
+    $totalItem = 0;
+    $totalPrice = 0;
+    foreach($cart as $c){
+        $totalItem += $c['quantity'];
+        $totalPrice += ($c['quantity']*$c['price']);
+    }
+@endphp
+
 <!-- Header Area Start -->
         <header class="header @if($transparentMenu == true) header-transparent @endif header-fullwidth header-style-1">
             <div class="header-inner fixed-header">
@@ -203,7 +212,7 @@
                                 <li class="header-toolbar__item">
                                     <a href="#miniCart" class="mini-cart-btn toolbar-btn">
                                         <i class="dl-icon-cart4"></i>
-                                        <sup class="mini-cart-count">2</sup>
+                                        <sup class="mini-cart-count">{{$totalItem}}</sup>
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item">
@@ -263,7 +272,7 @@
                             <li class="header-toolbar__item">
                                 <a href="#miniCart" class="mini-cart-btn toolbar-btn">
                                     <i class="dl-icon-cart4"></i>
-                                    <sup class="mini-cart-count">2</sup>
+                                    <sup class="mini-cart-count">{{$totalItem}}</sup>
                                 </a>
                             </li>
                             <li class="header-toolbar__item">

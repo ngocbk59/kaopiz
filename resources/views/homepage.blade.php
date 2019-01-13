@@ -392,7 +392,7 @@
 	                                                        <i class="dl-icon-view"></i>
 	                                                    </span>
 	                                                </a>
-	                                                <a class="add_to_cart_btn action-btn" href="{{route('cart.add', ['id' => $item->id])}}" data-toggle="tooltip" data-placement="top" title="Add to Cart">
+	                                                <a class="add_to_cart_btn action-btn" href="javascript:;" item_id={{$item->id}} data-toggle="tooltip" data-placement="top" title="Add to Cart">
 	                                                    <i class="dl-icon-cart29"></i>
 	                                                </a>
 	                                                <a class="add_wishlist action-btn" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
@@ -725,3 +725,49 @@
             </div>
             <!-- Blog area End Here -->
 @endsection
+@section('pagejs')
+    <script>
+        $(document).ready(function(){
+            $('.add_to_cart_btn').on('click', function(){
+                var itemId = $(this).attr('item_id');
+                $.ajax({
+                    url: '{{route('cart.add')}}',
+                    method: 'POST',
+                    data: {
+                        id: itemId,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'JSON',
+                    success: function(rp){
+                        // tang so luong san pham tren header
+                        var totalItem = 0;
+                        var totalPrice = 0;
+                        var assetBaseUrl = '{{asset('/')}}';
+                        var cartDetail = ``;
+                        for(var i = 0; i < rp.data.length; i++){
+                            var cItem = rp.data[i];
+                            totalItem += rp.data[i].quantity;
+                            totalPrice += (rp.data[i].quantity*rp.data[i].price);
+                            cartDetail += `<li class="mini-cart__product">
+                                                <a href="#" class="remove-from-cart remove">
+                                                    <i class="dl-icon-close"></i>
+                                                </a>
+                                                <div class="mini-cart__product__image">
+                                                    <img src="${assetBaseUrl + cItem.image}" alt="products">
+                                                </div>
+                                                <div class="mini-cart__product__content">
+                                                    <a class="mini-cart__product__title" href="product-details.html">${cItem.name}</a>
+                                                    <span class="mini-cart__product__quantity">${cItem.quantity} x $${cItem.price}</span>
+                                                </div>
+                                            </li>`;
+                        }
+                        $('.mini-cart-count').text(totalItem);
+                        $('.ammount').text('$' + totalPrice);
+                        $('.mini-cart__list').empty();
+                        $('.mini-cart__list').append(cartDetail);
+                        console.log(rp);
+                    }
+                })
+            })
+        });
+    </script>
